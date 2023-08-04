@@ -1,6 +1,6 @@
-package com.ken.learningproject;
+package com.ken.learningproject.service;
 
-import org.springframework.stereotype.Component;
+import com.ken.learningproject.model.Photo;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -30,10 +30,11 @@ public class PhotosService {
         return photos.remove(id);
     }
 
-    public Photo save(String fileName, byte [] data) {
+    public Photo save(String fileName, String contentType, byte [] data) {
 
         Photo photo= new Photo();
         photo.setId(UUID.randomUUID().toString());
+        photo.setContentType(contentType);
         photo.setPhotoName(fileName);
         photo.setData(data);
         photos.put(photo.getId(), photo);

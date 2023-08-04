@@ -1,5 +1,7 @@
-package com.ken.learningproject;
+package com.ken.learningproject.web;
 
+import com.ken.learningproject.service.PhotosService;
+import com.ken.learningproject.model.Photo;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -7,7 +9,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
 import java.util.Collection;
-import java.util.UUID;
 
 import static org.springframework.http.RequestEntity.put;
 
@@ -61,7 +62,7 @@ public class PhotoController {
     @PostMapping("/photos")
     public Photo uploadPhoto(@RequestPart("data") MultipartFile file) throws IOException {
 
-       Photo photo = photosService.save(file.getOriginalFilename(), file.getBytes());
+       Photo photo = photosService.save(file.getOriginalFilename(), file.getContentType(), file.getBytes());
 
         return photo;
     }

@@ -1,4 +1,4 @@
-package com.ken.learningproject;
+package com.ken.learningproject.model;
 
 import jakarta.validation.constraints.NotEmpty;
 
@@ -9,7 +9,17 @@ public class Photo {
     @NotEmpty
     private String photoName;
 
+    private String contentType;
+
     private byte[] data;
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
 
     public Photo() {
     }
